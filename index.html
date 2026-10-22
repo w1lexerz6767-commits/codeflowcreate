@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Демосайты · CodeFlow</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2048%2048%22%3E%3Ccircle%20cx%3D%2224%22%20cy%3D%2224%22%20r%3D%2222%22%20fill%3D%22%23111%22/%3E%3Ccircle%20cx%3D%2224%22%20cy%3D%2224%22%20r%3D%2213%22%20fill%3D%22none%22%20stroke%3D%22%23ff6a1a%22%20stroke-width%3D%224%22/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap">
+<style>/* Каталог демосайтов CodeFlow. */
+*, *::before, *::after { box-sizing: border-box; }
+:root {
+  --bg: #07080b;
+  --panel: #0f1218;
+  --fg: #eef1f5;
+  --muted: #949eac;
+  --accent: #ff6a1a;
+  --line: #1b1f27;
+  --line-strong: #2a3140;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+body {
+  margin: 0; background: var(--bg); color: var(--fg);
+  font-family: "Manrope", "Segoe UI", system-ui, sans-serif;
+  line-height: 1.6; -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+.wrap { width: 100%; max-width: 1180px; margin: 0 auto; padding: 0 clamp(1rem, 4vw, 2.5rem); }
+.head { padding: clamp(2.5rem, 6vw, 5rem) 0 clamp(1.5rem, 3vw, 2.5rem); border-bottom: 1px solid var(--line); position: relative; overflow: hidden; }
+.head::before {
+  content: ""; position: absolute; inset: -40% -10% auto 20%; height: 80%;
+  background: radial-gradient(50% 60% at 50% 50%, rgba(255, 106, 26, 0.35), transparent 70%);
+  filter: blur(90px); pointer-events: none;
+}
+.badge { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); }
+h1 { font-size: clamp(2rem, 1.4rem + 3vw, 3.4rem); line-height: 1.05; letter-spacing: -0.03em; margin: 0.8rem 0 0.6rem; font-weight: 700; }
+.lede { color: var(--muted); max-width: 62ch; margin: 0; }
+.meta { display: flex; flex-wrap: wrap; gap: 1.2rem; margin-top: 1.6rem; font-size: 0.9rem; color: var(--muted); }
+.meta b { color: var(--fg); }
+.notice { margin: 1.6rem 0 0; padding: 0.9rem 1.1rem; border: 1px dashed var(--line-strong); border-radius: 12px; font-size: 0.88rem; color: var(--muted); }
+
+.toolbar { display: flex; flex-wrap: wrap; gap: 0.7rem; padding: 1.6rem 0; }
+.toolbar input {
+  flex: 1 1 220px; min-width: 0; padding: 0.8rem 1rem; font: inherit;
+  background: var(--panel); color: var(--fg);
+  border: 1px solid var(--line-strong); border-radius: 10px;
+}
+.toolbar input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.cards { display: grid; gap: 1.1rem; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); padding-bottom: 4rem; }
+.site-card {
+  display: flex; flex-direction: column; gap: 0.5rem;
+  background: var(--panel); border: 1px solid var(--line); border-radius: 18px;
+  padding: 1.4rem; transition: transform 0.28s var(--ease), border-color 0.28s var(--ease), box-shadow 0.28s var(--ease);
+}
+.site-card:hover { transform: translateY(-4px); border-color: var(--line-strong); box-shadow: 0 26px 50px -34px #000; }
+.site-card__top { display: flex; align-items: center; justify-content: space-between; gap: 0.7rem; }
+.site-card__name { font-size: 1.15rem; font-weight: 700; letter-spacing: -0.01em; }
+.site-card__rating { font-size: 0.85rem; color: var(--accent); white-space: nowrap; }
+.site-card__meta { font-size: 0.86rem; color: var(--muted); }
+.site-card__theme { font-size: 0.74rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+.site-card__links { display: flex; gap: 0.5rem; margin-top: auto; padding-top: 0.9rem; }
+.site-card__links a {
+  flex: 1; text-align: center; padding: 0.6rem 0.8rem; border-radius: 9px;
+  font-size: 0.86rem; font-weight: 600; border: 1px solid var(--line-strong);
+  transition: border-color 0.2s var(--ease), color 0.2s var(--ease), background 0.2s var(--ease);
+}
+.site-card__links a.primary { background: var(--accent); color: #150600; border-color: transparent; }
+.site-card__links a:hover { border-color: var(--accent); color: var(--accent); }
+.site-card__links a.primary:hover { color: #150600; filter: brightness(1.07); }
+.empty { color: var(--muted); padding: 2rem 0 4rem; }
+@media (prefers-reduced-motion: reduce) { * { transition-duration: 0.001ms !important; } }
+</style>
+</head>
+<body>
+<header class="head">
+  <div class="wrap">
+    <span class="badge">CodeFlow · каталог демо-концептов</span>
+    <h1>Демосайты: шиномонтаж, Рязань</h1>
+    <p class="lede">Страницы собраны автоматически по открытым данным 2ГИС. Каждая — неофициальный демонстрационный концепт для показа представителю компании.</p>
+    <div class="meta">
+      <span>Сайтов: <b>20</b></span>
+      <span>Собрано: <b>22.10.2026 23:52</b></span>
+      <span>Город: <b>Рязань</b></span>
+    </div>
+    <p class="notice">Демо-концепт. Неофициальный сайт компании. По запросу представителя будет удалён.</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="toolbar">
+    <input id="q" type="search" placeholder="Поиск по названию, району, услуге" aria-label="Поиск по демосайтам">
+  </div>
+  <div class="cards" id="cards">
+    <article class="site-card" data-search="колесный мастер шиномонтаж октябрьский район рязань">
+      <div class="site-card__top">
+        <span class="site-card__name">Колесный мастер</span>
+<span class="site-card__rating">★ 5.0 · 51</span>      </div>
+<div class="site-card__meta">Шиномонтаж</div>      <div class="site-card__meta">Октябрьский район · +7 (910) 568-70-88</div>
+      <div class="site-card__theme">dark-automotive</div>
+      <div class="site-card__links">
+        <a class="primary" href="sites/kolesnyy-master/index.html">Открыть демо</a>
+<a href="https://2gis.com/firm/70000001034862064" target="_blank" rel="noopener noreferrer">2ГИС</a>      </div>
+    </article>
+    <article class="site-card" data-search="тракшина шиномонтаж октябрьский район рязань">
+      <div class="site-card__top">
+        <span class="site-card__name">Тракшина</span>
+<span class="site-card__rating">★ 5.0 · 8</span>      </div>
+<div class="site-card__meta">Шиномонтаж</div>      <div class="site-card__meta">Октябрьский район · +7 (930) 872-57-97</div>
+      <div class="site-card__theme">clean-service</div>
+      <div class="site-card__links">
+        <a class="primary" href="sites/trakshina/index.html">Открыть демо</a>
+<a href="https://2gis.com/firm/70000001075474674" target="_blank" rel="noopener noreferrer">2ГИС</a>      </div>
+    </article>
+    <article class="site-card" data-search="колобок шина шиномонтаж железнодорожный район рязань">
+      <div class="site-card__top">
+        <span class="site-card__name">Колобок шина</span>
+<span class="site-card__rating">★ 5.0 · 63</span>      </div>
+<div class="site-card__meta">Шиномонтаж</div>      <div class="site-card__meta">Железнодорожный район · +7 (930) 878-21-98</div>
+      <div class="site-card__theme">industrial-garage</div>
+      <div class="site-card__links">
+        <a class="primary" href="sites/kolobok-shina/index.html">Открыть демо</a>
+<a href="https://2gis.com/firm/6192978769237090" target="_blank" rel="noopener noreferrer">2ГИС</a>      </div>
+    </article>
+    <article class="site-card" data-search="андеграунд шиномонтаж советский район рязань">
+      <div class="site-card__top">
+        <span class="site-card__name">Андеграунд</span>
+<span class="site-card__rating">★ 5.0 · 39</span>      </div>
+<div class="site-card__meta">Шиномонтаж</div>      <div class="site-card__meta">Советский район · +7 (920) 976-15-02</div>
+      <div class="site-card__theme">dark-automotive</div>
+      <div class="site-card__links">
+        <a class="primary" href="sites/andegraund/index.html">Открыть демо</a>
+<a href="https://2gis.com/firm/70000001042031782" target="_blank" rel="noopener noreferrer">2ГИС</a>      </div>
+    </article>
+    <article class="site-card" data-search="север сервис 62 шиномонтаж московский район рязань">
+      <div class="site-card__top">
+        <span class="site-card__name">Север Сервис 62</span>
+<span class="site-card__rating">★ 5.0 · 1</span>      </div>
+<div class="site-card__meta">Шиномонтаж</div>      <div class="site-card__meta">Московский район · +7 (953) 747-04-93</div>
+      <div class="site-card__theme">clean-service</div>
+      <div class="site-card__links">
+        <a class="primary" href="sites/sever-servis-62/index.html">Открыть демо</a>
+<a href="https://2gis.com/firm/70000001046797213" target="_blank" rel="noopener noreferrer">2ГИС</a>      </div>
+    </article>
+    <article class="site-card" data-search="rzn profi шиномонтаж московский район рязань">
+      <div class="site-card__top">
+        <span class="site-card__name">Rzn profi</span>
+<span class="site-card__rating">★ 5.0 · 7</span>      </div>
+<div class="site-card__meta">Шиномонтаж</div>      <div class="site-card__meta">Московский район · +7 (900) 902-91-94</div>
+      <div class="site-card__theme">industrial-garage</div>
+      <div class="site-card__links">
+        <a class="primary" href="sites/rzn-profi/index.html">Открыть демо</a>
+<a href="https://2gis.com/firm/70000001099852067" target="_blank" rel="noopener noreferrer">2ГИС</a>      </div>
+    </article>
+    <article class="site-card" data-search="шиномонтажная мастерская шиномонтаж московский район рязань">
+      <div class="site-card__top">
+        <span class="site-card__name">Шиномонтажная мастерская</span>
+<span class="site-card__rating">★ 5.0 · 4</span>      </div>
+<div class="site-card__meta">Шиномонтаж</div>      <div class="site-card__meta">Московский район · +7 (920) 639-14-34</div>
+      <div class="site-card__theme">dark-automotive</div>
+      <div class="site-card__links">
+        <a class="primary" href="sites/shinomontazhnaya-masterskaya/index.html">Открыть демо</a>
+<a href="https://2gis.com/firm/70000001085331276" target="_blank" rel="noopener noreferrer">2ГИС</a>      </div>
+    </article>
+    <article class="site-card" data-search="renservis шиномонтаж московский район рязань">
+      <div class="site-card__top">
+        <span class="site-card__name">Renservis</span>
+<span class="site-card__rating">★ 5.0 · 4</span>      </div>
+<div class="site-card__meta">Шиномонтаж</div>      <div class="site-card__meta">Московский район · +7 (906) 546-98-27</div>
+      <div class="site-card__theme">clean-service</div>
+      <div class="site-card__links">
+        <a class="primary" href="sites/renservis/index.html">Открыть демо</a>
+<a href="https://2gis.com/firm/70000001018290820" target="_blank" rel="noopener noreferrer">2ГИС</a>      </div>
+    </article>
+    <article class="site-card" data-search="питстоп62 шиномонтаж железнодорожный район рязань">
+      <div class="site-card__top">
+        <span class="site-card__name">ПитСтоп62</span>
+<span class="site-card__rating">★ 5.0 · 1</span>      </div>
+<div class="site-card__meta">Шиномонтаж</div>      <div class="site-card__meta">Железнодорожный район · +7 (930) 883-51-84</div>
+      <div class="site-card__theme">industrial-garage</div>
+      <div class="site-card__links">
+        <a class="primary" href="sites/pitstop62/index.html">Открыть демо</a>
+<a href="https://2gis.com/firm/70000001112097000" target="_blank" rel="noopener noreferrer">2ГИС</a>      </div>
+    </article>
+    <article class="site-card" data-search="whitebear шиномонтаж московский район рязань">
+      <div class="site-card__top">
+        <span class="site-card__name">WhiteBear</span>
+<span class="site-card__rating">★ 5.0 · 4</span>      </div>
+<div class="site-card__meta">Шиномонтаж</div>      <div class="site-card__meta">Московский район · +7 (953) 730-68-70</div>
+      <div class="site-card__theme">dark-automotive</div>
+      <div class="site-card__links">
+        <a class="primary" href="sites/whitebear/index.html">Открыть демо</a>
+<a href="https://2gis.com/firm/70000001109866225" target="_blank" rel="noopener noreferrer">2ГИС</a>      </div>
+    </article>
+    <article class="site-card" data-search="шиномонтажная мастерская шиномонтаж советский район рязань">
+      <div class="site-card__top">
+        <span class="site-card__name">Шиномонтажная мастерская</span>
+<span class="site-card__rating">★ 5.0 · 5</span>      </div>
+<div class="site-card__meta">Шиномонтаж</div>      <div class="site-card__meta">Советский район · +7 (910) 623-04-72</div>
+      <div class="site-card__theme">clean-service</div>
+      <div class="site-card__links">
+        <a class="primary" href="sites/shinomontazhnaya-masterskaya-3/index.html">Открыть демо</a>
+<a href="https://2gis.com/firm/70000001054684177" target="_blank" rel="noopener noreferrer">2ГИС</a>      </div>
+    </article>
+    <article class="site-card" data-search="car repair шиномонтаж советский район рязань">
+      <div class="site-card__top">
+        <span class="site-card__name">Car Repair</span>
+<span class="site-card__rating">★ 5.0 · 6</span>      </div>
+<div class="site-card__meta">Шиномонтаж</div>      <div class="site-card__meta">Советский район · +7 (915) 624-93-03</div>
+      <div class="site-card__theme">industrial-garage</div>
+      <div class="site-card__links">
+        <a class="primary" href="sites/car-repair/index.html">Открыть демо</a>
+<a href="https://2gis.com/firm/70000001092840788" target="_blank" rel="noopener noreferrer">2ГИС</a>      </div>
+    </article>
+    <article class="site-card" data-search="авто маяк шиномонтаж октябрьский район рязань">
+      <div class="site-card__top">
+        <span class="site-card__name">Авто маяк</span>
+<span class="site-card__rating">★ 5.0 · 50</span>      </div>
+<div class="site-card__meta">Шиномонтаж</div>      <div class="site-card__meta">Октябрьский район · +7 (920) 964-70-13</div>
+      <div class="site-card__theme">dark-automotive</div>
+      <div class="site-card__links">
+        <a class="primary" href="sites/avto-mayak/index.html">Открыть демо</a>
+<a href="https://2gis.com/firm/70000001034165667" target="_blank" rel="noopener noreferrer">2ГИС</a>      </div>
+    </article>
+    <article class="site-card" data-search="бокс №1 шиномонтаж железнодорожный район рязань">
+      <div class="site-card__top">
+        <span class="site-card__name">Бокс №1</span>
+<span class="site-card__rating">★ 5.0 · 1</span>      </div>
+<div class="site-card__meta">Шиномонтаж</div>      <div class="site-card__meta">Железнодорожный район · +7 (910) 615-01-39</div>
+      <div class="site-card__theme">clean-service</div>
+      <div class="site-card__links">
+        <a class="primary" href="sites/boks-1/index.html">Открыть демо</a>
+<a href="https://2gis.com/firm/70000001117047479" target="_blank" rel="noopener noreferrer">2ГИС</a>      </div>
+    </article>
+    <article class="site-card" data-search="rmg шиномонтаж октябрьский район рязань">
+      <div class="site-card__top">
+        <span class="site-card__name">Rmg</span>
+<span class="site-card__rating">★ 5.0 · 1</span>      </div>
+<div class="site-card__meta">Шиномонтаж</div>      <div class="site-card__meta">Октябрьский район · +7 (920) 634-43-33</div>
+      <div class="site-card__theme">industrial-garage</div>
+      <div class="site-card__links">
+        <a class="primary" href="sites/rmg/index.html">Открыть демо</a>
+<a href="https://2gis.com/firm/70000001028936831" target="_blank" rel="noopener noreferrer">2ГИС</a>      </div>
+    </article>
+    <article class="site-card" data-search="автосервис на новосёлов шиномонтаж октябрьский район рязань">
+      <div class="site-card__top">
+        <span class="site-card__name">Автосервис на Новосёлов</span>
+<span class="site-card__rating">★ 5.0 · 8</span>      </div>
+<div class="site-card__meta">Шиномонтаж</div>      <div class="site-card__meta">Октябрьский район · +7 (910) 500-58-57</div>
+      <div class="site-card__theme">dark-automotive</div>
+      <div class="site-card__links">
+        <a class="primary" href="sites/avtoservis-na-novoselov/index.html">Открыть демо</a>
+<a href="https://2gis.com/firm/70000001075890320" target="_blank" rel="noopener noreferrer">2ГИС</a>      </div>
+    </article>
+    <article class="site-card" data-search="шиномонтажная мастерская шиномонтаж октябрьский район рязань">
+      <div class="site-card__top">
+        <span class="site-card__name">Шиномонтажная мастерская</span>
+<span class="site-card__rating">★ 5.0 · 1</span>      </div>
+<div class="site-card__meta">Шиномонтаж</div>      <div class="site-card__meta">Октябрьский район · +7 (915) 615-24-68</div>
+      <div class="site-card__theme">clean-service</div>
+      <div class="site-card__links">
+        <a class="primary" href="sites/shinomontazhnaya-masterskaya-4/index.html">Открыть демо</a>
+<a href="https://2gis.com/firm/70000001118332904" target="_blank" rel="noopener noreferrer">2ГИС</a>      </div>
+    </article>
+    <article class="site-card" data-search="шинсервис шиномонтаж железнодорожный район рязань">
+      <div class="site-card__top">
+        <span class="site-card__name">Шинсервис</span>
+<span class="site-card__rating">★ 5.0 · 2</span>      </div>
+<div class="site-card__meta">Шиномонтаж</div>      <div class="site-card__meta">Железнодорожный район · +7 (491) 299-33-66</div>
+      <div class="site-card__theme">industrial-garage</div>
+      <div class="site-card__links">
+        <a class="primary" href="sites/shinservis-4/index.html">Открыть демо</a>
+<a href="https://2gis.com/firm/6192977768720675" target="_blank" rel="noopener noreferrer">2ГИС</a>      </div>
+    </article>
+    <article class="site-card" data-search="честный гараж шиномонтаж советский район рязань">
+      <div class="site-card__top">
+        <span class="site-card__name">Честный гараж</span>
+<span class="site-card__rating">★ 5.0 · 4</span>      </div>
+<div class="site-card__meta">Шиномонтаж</div>      <div class="site-card__meta">Советский район · +7 (906) 543-43-06</div>
+      <div class="site-card__theme">dark-automotive</div>
+      <div class="site-card__links">
+        <a class="primary" href="sites/chestnyy-garazh/index.html">Открыть демо</a>
+<a href="https://2gis.com/firm/70000001063520326" target="_blank" rel="noopener noreferrer">2ГИС</a>      </div>
+    </article>
+    <article class="site-card" data-search="газель сервис 62 шиномонтаж октябрьский район рязань">
+      <div class="site-card__top">
+        <span class="site-card__name">Газель сервис 62</span>
+<span class="site-card__rating">★ 5.0 · 1</span>      </div>
+<div class="site-card__meta">Шиномонтаж</div>      <div class="site-card__meta">Октябрьский район · +7 (920) 977-78-87</div>
+      <div class="site-card__theme">clean-service</div>
+      <div class="site-card__links">
+        <a class="primary" href="sites/gazel-servis-62/index.html">Открыть демо</a>
+<a href="https://2gis.com/firm/70000001022350039" target="_blank" rel="noopener noreferrer">2ГИС</a>      </div>
+    </article>
+  </div>
+  <p class="empty" id="empty" hidden>Ничего не найдено.</p>
+</main>
+
+<script>
+(function () {
+  var input = document.getElementById("q");
+  var cards = Array.prototype.slice.call(document.querySelectorAll(".site-card"));
+  var empty = document.getElementById("empty");
+  input.addEventListener("input", function () {
+    var q = input.value.trim().toLowerCase();
+    var shown = 0;
+    cards.forEach(function (card) {
+      var match = !q || card.dataset.search.indexOf(q) !== -1;
+      card.hidden = !match;
+      if (match) { shown++; }
+    });
+    empty.hidden = shown !== 0;
+  });
+})();
+</script>
+</body>
+</html>
