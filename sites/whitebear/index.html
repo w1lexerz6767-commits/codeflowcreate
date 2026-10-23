@@ -8,279 +8,219 @@
 <meta name="robots" content="noindex, nofollow, noarchive">
 <meta name="googlebot" content="noindex, nofollow">
 <meta name="generator" content="CodeFlow Website Factory">
-<meta name="theme-color" content="#0a0c10">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;700&amp;display=swap"><link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2048%2048%22%3E%3Ccircle%20cx%3D%2224%22%20cy%3D%2224%22%20r%3D%2222%22%20fill%3D%22%23111%22/%3E%3Ccircle%20cx%3D%2224%22%20cy%3D%2224%22%20r%3D%2213%22%20fill%3D%22none%22%20stroke%3D%22%23ff6a1a%22%20stroke-width%3D%224%22/%3E%3C/svg%3E">
-<style>/* CodeFlow — дизайн-система демосайтов v2.
-   Тема задаёт токены (цвет, шрифты, радиусы), этот файл — структуру и поведение.
-   Компоновку выбирает атрибут body[data-layout]: split | center | poster. */
-
+<meta name="theme-color" content="#f7f6f3">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&amp;display=swap"><link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2048%2048%22%3E%3Ccircle%20cx%3D%2224%22%20cy%3D%2224%22%20r%3D%2222%22%20fill%3D%22%23111%22/%3E%3Ccircle%20cx%3D%2224%22%20cy%3D%2224%22%20r%3D%2213%22%20fill%3D%22none%22%20stroke%3D%22%23ff6a1a%22%20stroke-width%3D%224%22/%3E%3C/svg%3E">
+<style>/* Общая основа четырёх концепций: сброс, базовые компоненты данных, доступность.
+   Внешний вид задают переменные и правила концепции (идёт после этого файла). */
 *, *::before, *::after { box-sizing: border-box; }
-
 :root {
   --step--1: clamp(0.8rem, 0.77rem + 0.15vw, 0.9rem);
   --step-0: clamp(1rem, 0.96rem + 0.2vw, 1.08rem);
   --step-1: clamp(1.15rem, 1.08rem + 0.35vw, 1.35rem);
   --step-2: clamp(1.4rem, 1.25rem + 0.7vw, 1.8rem);
-  --step-3: clamp(1.8rem, 1.45rem + 1.6vw, 2.8rem);
-  --step-4: clamp(2.3rem, 1.3rem + 4.6vw, 5rem);
-  --space-1: 0.5rem; --space-2: 1rem; --space-3: 1.5rem; --space-4: 2.5rem;
-  --radius-s: 10px; --radius-m: 18px; --radius-l: 28px;
-  --maxw: 1200px;
+  --step-3: clamp(1.9rem, 1.45rem + 1.9vw, 3rem);
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --maxw: 1200px;
   --header-h: 68px;
+  --radius: 10px;
+  --radius-lg: 20px;
 }
-
 html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: calc(var(--header-h) + 12px); }
-
-body {
-  margin: 0; font-family: var(--font-body); font-size: var(--step-0); line-height: 1.6;
-  color: var(--fg); background: var(--bg); overflow-x: hidden;
-  -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
-  hyphens: manual; overflow-wrap: break-word;
-}
+body { margin: 0; font-family: var(--font-body); font-size: var(--step-0); line-height: 1.6; color: var(--fg); background: var(--bg); overflow-x: hidden; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; hyphens: manual; overflow-wrap: break-word; }
 img, svg { max-width: 100%; display: block; }
 a { color: inherit; text-decoration: none; }
-h1, h2, h3 { font-family: var(--font-display); line-height: 1.06; letter-spacing: var(--display-tracking, -0.02em); margin: 0 0 var(--space-2); text-wrap: balance; }
-h1 { font-size: var(--step-4); overflow-wrap: anywhere; }
-h2 { font-size: var(--step-3); }
-h3 { font-size: var(--step-1); line-height: 1.2; }
-p { margin: 0 0 var(--space-2); text-wrap: pretty; }
+h1, h2, h3 { font-family: var(--font-display); margin: 0 0 1rem; text-wrap: balance; }
+h1 { overflow-wrap: anywhere; }
+p { margin: 0 0 1rem; text-wrap: pretty; }
 ul { margin: 0; padding: 0; list-style: none; }
-
 .wrap { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 clamp(1rem, 4vw, 2.5rem); }
-.section { padding: clamp(3.2rem, 7vw, 6.5rem) 0; position: relative; }
-.eyebrow { display: inline-flex; align-items: center; gap: 0.6rem; font-size: var(--step--1); font-weight: 650; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); }
-.eyebrow::before { content: ""; width: 26px; height: 2px; background: currentColor; border-radius: 2px; }
-.lede { font-size: var(--step-1); color: var(--fg-muted); max-width: 56ch; }
-.muted { color: var(--fg-muted); }
+.muted { color: var(--muted); }
 
-/* --- демо-маркировка --- */
-.demo-bar { position: relative; z-index: 60; background: var(--demo-bg); color: var(--demo-fg); font-size: var(--step--1); text-align: center; padding: 0.5rem clamp(1rem, 4vw, 2rem); line-height: 1.4; }
+.demo-bar { position: relative; z-index: 80; background: var(--demo-bg); color: var(--demo-fg); font-size: var(--step--1); text-align: center; padding: 0.5rem clamp(1rem, 4vw, 2rem); line-height: 1.4; }
 .demo-bar b { font-weight: 700; }
 
-/* --- шапка --- */
-.site-head { position: sticky; top: 0; z-index: 50; backdrop-filter: blur(16px) saturate(140%); background: var(--head-bg); border-bottom: 1px solid var(--line); }
-.site-head__inner { display: flex; align-items: center; gap: var(--space-3); min-height: var(--header-h); }
-.brand { display: flex; align-items: center; gap: 0.7rem; font-family: var(--font-display); font-weight: 700; font-size: var(--step-1); letter-spacing: -0.01em; min-width: 0; }
-.brand span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.brand__mark { width: 36px; height: 36px; flex: 0 0 36px; }
-.nav { display: none; margin-left: auto; gap: var(--space-3); font-size: var(--step--1); font-weight: 600; }
-.nav a { color: var(--fg-muted); position: relative; padding: 0.3rem 0; transition: color 0.2s var(--ease); }
-.nav a::after { content: ""; position: absolute; left: 0; right: 0; bottom: -2px; height: 2px; background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform 0.3s var(--ease); }
-.nav a:hover, .nav a:focus-visible { color: var(--fg); }
-.nav a:hover::after, .nav a:focus-visible::after { transform: scaleX(1); }
-.site-head .btn { margin-left: auto; }
-.nav + .btn { margin-left: 0; }
-
-/* --- кнопки --- */
-.btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem; font: inherit; font-weight: 650; line-height: 1; padding: 1rem 1.6rem; border-radius: var(--radius-s); border: 1px solid transparent; cursor: pointer; white-space: nowrap; transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease), background 0.25s var(--ease), color 0.25s var(--ease), border-color 0.25s var(--ease); }
-.btn svg { width: 18px; height: 18px; flex: 0 0 18px; }
-.btn--primary { background: var(--accent); color: var(--accent-fg); box-shadow: var(--shadow-accent); }
-.btn--primary:hover { transform: translateY(-2px); box-shadow: var(--shadow-accent-hover); }
-.btn--ghost { background: var(--ghost-bg); color: var(--fg); border-color: var(--line-strong); }
-.btn--ghost:hover { transform: translateY(-2px); border-color: var(--accent); color: var(--accent); }
-.btn--sm { padding: 0.65rem 1.1rem; font-size: var(--step--1); }
-.btn:focus-visible, a:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: var(--radius-s); }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem; font: inherit; font-weight: 650; line-height: 1; padding: 1rem 1.6rem; border-radius: var(--radius); border: 1px solid transparent; cursor: pointer; white-space: nowrap; transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease), background 0.25s var(--ease), color 0.25s var(--ease), border-color 0.25s var(--ease); }
+.btn svg { width: 18px; height: 18px; flex: 0 0 18px; transition: transform 0.25s var(--ease); }
+.btn:hover svg { transform: translateX(2px); }
+.btn--primary { background: var(--accent); color: var(--accent-fg); }
+.btn--primary:hover { transform: translateY(-2px); }
+.btn--ghost { background: transparent; color: var(--fg); border-color: var(--line-strong); }
+.btn--ghost:hover { transform: translateY(-2px); border-color: var(--accent); }
+.btn--sm { padding: 0.7rem 1.1rem; font-size: var(--step--1); }
+.btn:active { transform: translateY(0) scale(0.98); }
+.btn:focus-visible, a:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
 @media (pointer: coarse) { .btn { min-height: 46px; } }
 
-/* --- первый экран --- */
-.hero { position: relative; overflow: hidden; padding: clamp(2.8rem, 7vw, 6.5rem) 0 clamp(3rem, 6vw, 5.5rem); isolation: isolate; }
-.hero__glow { position: absolute; inset: -35% -10% auto -10%; height: 75%; background: var(--glow); filter: blur(100px); opacity: var(--glow-opacity, 0.55); pointer-events: none; z-index: -1; }
-.hero__grid { position: absolute; inset: 0; background-image: var(--grid); background-size: 56px 56px; opacity: var(--grid-opacity, 0.6); mask-image: radial-gradient(75% 65% at 50% 0%, #000 35%, transparent 100%); pointer-events: none; z-index: -1; }
-.hero__inner { display: grid; gap: clamp(2rem, 5vw, 4.5rem); align-items: center; }
-.hero__title { margin: 0.9rem 0 1.1rem; }
-.hero__actions { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: var(--space-3); }
-.hero__addr { margin-top: var(--space-3); font-size: var(--step--1); color: var(--fg-muted); display: flex; gap: 0.5rem; align-items: center; }
-.hero__addr svg { width: 16px; height: 16px; color: var(--accent); flex: 0 0 16px; }
+.brand { display: flex; align-items: center; gap: 0.7rem; min-width: 0; font-family: var(--font-display); font-weight: 700; }
+.brand__mark { width: 34px; height: 34px; flex: 0 0 34px; }
+.brand span { overflow: hidden; text-overflow: ellipsis; }
 
-.hero__media { position: relative; border-radius: var(--radius-l); overflow: hidden; border: 1px solid var(--line); background: var(--art-bg); aspect-ratio: 5 / 4; box-shadow: var(--shadow-card); }
-.hero__media svg, .hero__media img { width: 100%; height: 100%; object-fit: cover; }
-.hero__media .spin { transform-origin: 330px 240px; animation: spin 40s linear infinite; }
-@keyframes spin { to { transform: rotate(360deg); } }
-.hero__badge { position: absolute; left: 1rem; bottom: 1rem; padding: 0.45rem 0.8rem; border-radius: 999px; background: var(--head-bg); border: 1px solid var(--line-strong); backdrop-filter: blur(10px); font-size: 0.78rem; color: var(--fg-muted); }
+.rating-link { display: inline-flex; align-items: baseline; gap: 0.35rem; flex-wrap: wrap; border-bottom: 1px solid var(--line-strong); padding-bottom: 2px; transition: border-color 0.2s var(--ease); }
+.rating-link:hover { border-color: var(--accent); }
+.rating-link .star { color: var(--accent); }
+.rating-link__n, .rating-link__src { color: var(--muted); font-size: 0.88em; }
 
-/* факт-бар под первым экраном */
-.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); border: 1px solid var(--line); border-radius: var(--radius-m); overflow: hidden; background: var(--line); gap: 1px; margin-top: clamp(2rem, 5vw, 3.5rem); }
-.fact { background: var(--card-bg); padding: 1.15rem 1.4rem; display: grid; gap: 0.15rem; }
-.fact__value { font-family: var(--font-display); font-size: var(--step-2); line-height: 1.1; display: flex; align-items: baseline; gap: 0.4rem; flex-wrap: wrap; }
-.fact__value small { font-size: var(--step--1); color: var(--fg-muted); font-family: var(--font-body); font-weight: 500; }
-.fact__label { font-size: var(--step--1); color: var(--fg-muted); }
-.star { color: var(--accent); }
+.hours { border: 1px solid var(--line); background: var(--card); }
+.hours__row { display: flex; justify-content: space-between; gap: 1rem; padding: 0.8rem clamp(1rem, 2vw, 1.4rem); border-bottom: 1px solid var(--line); }
+.hours__row:last-child { border-bottom: 0; }
+.hours__day { color: var(--muted); }
+.hours__row--today { background: var(--today); }
+.hours__row--today .hours__day { color: var(--fg); font-weight: 650; }
+.hours__value { font-weight: 600; font-variant-numeric: tabular-nums; text-align: right; min-width: 0; overflow-wrap: anywhere; }
 
-/* --- заголовки секций --- */
-.section__head { display: grid; gap: 0.4rem; margin-bottom: clamp(1.8rem, 4vw, 3rem); max-width: 60ch; }
-.section__head h2 { margin: 0.5rem 0 0; }
+.contact-list { display: grid; gap: 1.1rem; }
+.contact-item { display: flex; gap: 1rem; align-items: flex-start; }
+.contact-item__icon { width: 42px; height: 42px; flex: 0 0 42px; display: grid; place-items: center; color: var(--accent); background: var(--accent-soft); border-radius: var(--radius); }
+.contact-item__icon svg { width: 20px; height: 20px; }
+.contact-item__label { font-size: var(--step--1); color: var(--muted); line-height: 1.3; }
+.contact-item__value { font-weight: 650; overflow-wrap: anywhere; }
+a.contact-item__value:hover { color: var(--accent); }
+.chat-row { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.5rem; }
 
-/* --- карточки услуг --- */
-.grid { display: grid; gap: clamp(0.9rem, 2vw, 1.4rem); }
-.grid--services { grid-template-columns: repeat(auto-fit, minmax(min(100%, 270px), 1fr)); }
-.card { position: relative; overflow: hidden; background: var(--card-bg); border: 1px solid var(--line); border-radius: var(--radius-m); padding: clamp(1.3rem, 2.4vw, 1.8rem); transition: transform 0.35s var(--ease), border-color 0.35s var(--ease), box-shadow 0.35s var(--ease); }
-.card::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: var(--card-sheen); opacity: 0; transition: opacity 0.35s var(--ease); }
-.card:hover { transform: translateY(-4px); border-color: var(--line-strong); box-shadow: var(--shadow-card); }
-.card:hover::after { opacity: 1; }
-.card__icon { width: 52px; height: 52px; border-radius: var(--radius-s); display: grid; place-items: center; background: var(--accent-soft); color: var(--accent); margin-bottom: 1.1rem; }
-.card__icon svg { width: 26px; height: 26px; }
-.card__title { margin: 0; font-size: var(--step-1); }
-.card__text { margin: 0.5rem 0 0; color: var(--fg-muted); }
-.card__price { margin-top: 0.8rem; font-family: var(--font-display); font-size: var(--step-1); color: var(--accent); }
-.service-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.5rem; margin-top: clamp(1.4rem, 3vw, 2.2rem); padding: 1.1rem 1.4rem; border: 1px dashed var(--line-strong); border-radius: var(--radius-m); }
-.service-foot p { margin: 0; flex: 1 1 260px; color: var(--fg-muted); }
-.service-foot b { color: var(--fg); }
-
-/* --- прайс (только подтверждённые цены) --- */
-.prices { border: 1px solid var(--line); border-radius: var(--radius-m); overflow: hidden; background: var(--card-bg); }
-.prices__row { display: flex; justify-content: space-between; gap: 1rem; padding: 1rem clamp(1rem, 2vw, 1.5rem); border-bottom: 1px solid var(--line); align-items: baseline; }
+.prices { border: 1px solid var(--line); background: var(--card); }
+.prices__row { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding: 1rem clamp(1rem, 2vw, 1.5rem); border-bottom: 1px solid var(--line); }
 .prices__row:last-child { border-bottom: 0; }
 .prices__service { font-weight: 600; }
 .prices__amount { font-family: var(--font-display); font-size: var(--step-1); white-space: nowrap; color: var(--accent); }
-.prices__src { margin-top: 0.9rem; font-size: var(--step--1); color: var(--fg-muted); }
-.prices__src a { text-decoration: underline; text-underline-offset: 3px; }
+.prices__src { margin-top: 0.9rem; font-size: var(--step--1); color: var(--muted); }
+.prices__src a, .site-foot a, .credit a { text-decoration: underline; text-underline-offset: 3px; }
+.service-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.5rem; margin-top: 1.8rem; padding: 1.1rem 1.4rem; border: 1px dashed var(--line-strong); border-radius: var(--radius); }
+.service-foot p { margin: 0; flex: 1 1 260px; color: var(--muted); }
+.service-foot b { color: var(--fg); }
 
-/* --- преимущества (bento) --- */
-.bento { display: grid; gap: clamp(0.9rem, 2vw, 1.4rem); grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); }
-.bento__item { padding: clamp(1.3rem, 2.4vw, 1.9rem); border-radius: var(--radius-m); background: var(--card-bg); border: 1px solid var(--line); display: grid; gap: 0.4rem; align-content: start; }
-.bento__item:first-child { background: var(--accent); color: var(--accent-fg); border-color: transparent; }
-.bento__item:first-child p { color: inherit; opacity: 0.82; }
-.bento__num { font-family: var(--font-display); font-size: var(--step-3); line-height: 1; opacity: 0.9; }
-.bento__item h3 { margin: 0.2rem 0 0; }
-.bento__item p { margin: 0; color: var(--fg-muted); }
-
-/* --- галерея --- */
 .gallery { display: grid; gap: clamp(0.7rem, 1.6vw, 1.1rem); grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); }
-.gallery figure { margin: 0; border-radius: var(--radius-m); overflow: hidden; border: 1px solid var(--line); background: var(--card-bg); aspect-ratio: 4 / 3; }
+.gallery figure { margin: 0; overflow: hidden; border: 1px solid var(--line); aspect-ratio: 4 / 3; background: var(--card); }
 .gallery img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s var(--ease); }
 .gallery figure:hover img { transform: scale(1.04); }
-.credit { margin-top: 0.8rem; font-size: var(--step--1); color: var(--fg-muted); }
+.credit { margin-top: 0.8rem; font-size: var(--step--1); color: var(--muted); }
 
-/* --- график и контакты --- */
-.split { display: grid; gap: clamp(1.4rem, 4vw, 3rem); align-items: start; }
-.hours { border: 1px solid var(--line); border-radius: var(--radius-m); overflow: hidden; background: var(--card-bg); }
-.hours__row { display: flex; justify-content: space-between; gap: 1rem; padding: 0.8rem clamp(1rem, 2vw, 1.4rem); border-bottom: 1px solid var(--line); }
-.hours__row:last-child { border-bottom: 0; }
-.hours__row--today { background: var(--today-bg); }
-.hours__day { color: var(--fg-muted); }
-.hours__row--today .hours__day { color: var(--fg); font-weight: 600; }
-.hours__value { font-weight: 600; font-variant-numeric: tabular-nums; }
-.contact-list { display: grid; gap: 1.2rem; }
-.contact-item { display: flex; gap: 1rem; align-items: flex-start; }
-.contact-item__icon { width: 42px; height: 42px; flex: 0 0 42px; border-radius: var(--radius-s); display: grid; place-items: center; background: var(--accent-soft); color: var(--accent); }
-.contact-item__icon svg { width: 20px; height: 20px; }
-.contact-item__label { font-size: var(--step--1); color: var(--fg-muted); line-height: 1.3; }
-.contact-item__value { font-weight: 650; overflow-wrap: anywhere; }
-.contact-item a.contact-item__value:hover { color: var(--accent); }
-.chat-row { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.6rem; padding-top: 1.4rem; border-top: 1px solid var(--line); }
-
-/* --- финальный CTA --- */
-.cta { position: relative; overflow: hidden; border-radius: var(--radius-l); padding: clamp(2rem, 6vw, 4rem); background: var(--cta-bg); border: 1px solid var(--line-strong); isolation: isolate; }
-.cta__inner { display: grid; gap: var(--space-2); max-width: 56ch; }
-.cta h2 { margin: 0.4rem 0 0; }
-.cta .lede { margin: 0; }
-
-/* --- подвал --- */
-.site-foot { border-top: 1px solid var(--line); padding: var(--space-4) 0 calc(var(--space-4) + 72px); font-size: var(--step--1); color: var(--fg-muted); }
-.site-foot a { text-decoration: underline; text-underline-offset: 3px; }
-.site-foot__disclaimer { padding: 0.9rem 1.1rem; border: 1px dashed var(--line-strong); border-radius: var(--radius-s); margin-bottom: var(--space-3); color: var(--fg); }
+.site-foot { border-top: 1px solid var(--line); padding: 2.5rem 0 calc(2.5rem + 72px); font-size: var(--step--1); color: var(--muted); }
 .site-foot p { margin: 0 0 0.5rem; }
+.site-foot__disclaimer { padding: 0.9rem 1.1rem; border: 1px dashed var(--line-strong); border-radius: var(--radius); margin-bottom: 1.4rem !important; color: var(--fg); }
 
-/* --- нижняя панель на мобильных --- */
-.callbar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 70; display: flex; gap: 0.6rem; padding: 0.7rem clamp(0.75rem, 3vw, 1.2rem); background: var(--head-bg); border-top: 1px solid var(--line); backdrop-filter: blur(16px); padding-bottom: calc(0.7rem + env(safe-area-inset-bottom, 0px)); }
-.callbar .btn { flex: 1; }
+.callbar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 90; display: flex; gap: 0.6rem; padding: 0.7rem clamp(0.75rem, 3vw, 1.2rem); background: var(--head-bg); border-top: 1px solid var(--line); backdrop-filter: blur(16px); padding-bottom: calc(0.7rem + env(safe-area-inset-bottom, 0px)); }
+.callbar .btn { flex: 1 1 0; min-width: 0; padding-inline: 0.7rem; gap: 0.4rem; letter-spacing: 0.02em; font-size: 0.82rem; }
+@media (min-width: 900px) { .callbar { display: none; } .site-foot { padding-bottom: 2.5rem; } }
 
-/* --- появление при скролле (без JS контент виден) --- */
 .reveal { opacity: 1; transform: none; }
-html.js .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
+html.js .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
 html.js .reveal.is-visible { opacity: 1; transform: none; }
-
-/* ===== компоновки ===== */
-@media (min-width: 760px) {
-  .nav { display: flex; }
-  .split { grid-template-columns: 1fr 1fr; }
-  body[data-layout="split"] .hero__inner { grid-template-columns: 1.05fr 0.95fr; }
-}
-@media (min-width: 900px) {
-  .callbar { display: none; }
-  .site-foot { padding-bottom: var(--space-4); }
-}
-
-/* center: заголовок по центру, медиа широкой лентой */
-body[data-layout="center"] .hero__copy { text-align: center; display: grid; justify-items: center; }
-body[data-layout="center"] .hero__copy .lede { margin-inline: auto; }
-body[data-layout="center"] .hero__actions, body[data-layout="center"] .hero__addr { justify-content: center; }
-body[data-layout="center"] .hero__media { aspect-ratio: 16 / 7; }
-body[data-layout="center"] .grid--services { grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); }
-body[data-layout="center"] .card { display: grid; grid-template-columns: auto 1fr; gap: 0 1.1rem; align-items: center; }
-body[data-layout="center"] .card__icon { margin: 0; grid-row: span 2; }
-body[data-layout="center"] .card__text, body[data-layout="center"] .card__price { grid-column: 2; }
-
-/* poster: фон на всю ширину, текст поверх */
-body[data-layout="poster"] .hero { min-height: min(86vh, 760px); display: grid; align-items: end; padding-bottom: clamp(2.5rem, 6vw, 4.5rem); }
-body[data-layout="poster"] .hero__inner { grid-template-columns: 1fr; position: static; }
-body[data-layout="poster"] .hero__media { position: absolute; inset: 0; z-index: -2; border: 0; border-radius: 0; aspect-ratio: auto; box-shadow: none; opacity: 0.92; }
-body[data-layout="poster"] .hero__media::after { content: ""; position: absolute; inset: 0; background: var(--poster-overlay); }
-body[data-layout="poster"] .hero__badge { display: none; }
-body[data-layout="poster"] .hero__copy { max-width: 760px; }
-body[data-layout="poster"] .hero__title { font-size: clamp(2.5rem, 1.2rem + 6.4vw, 6rem); }
-body[data-layout="poster"] .grid--services { grid-template-columns: 1fr; gap: 0; border-top: 1px solid var(--line); }
-body[data-layout="poster"] .card { border: 0; border-bottom: 1px solid var(--line); border-radius: 0; background: transparent; display: grid; grid-template-columns: auto 1fr auto; gap: 0 1.4rem; align-items: center; padding-inline: 0; }
-body[data-layout="poster"] .card:hover { transform: none; box-shadow: none; padding-left: 0.6rem; }
-body[data-layout="poster"] .card__icon { margin: 0; }
-body[data-layout="poster"] .card__text { grid-column: 2; margin-top: 0.2rem; }
-body[data-layout="poster"] .card__price { grid-column: 3; grid-row: 1; margin: 0; }
-
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition-duration: 0.001ms !important; }
   .reveal, html.js .reveal { opacity: 1; transform: none; }
 }
 
-@media (max-width: 480px) {
-  .brand span { white-space: normal; line-height: 1.15; font-size: 1rem; }
-  .site-head .btn { padding-inline: 1rem; }
-}
+/* Сетки не должны расширяться содержимым: колонка может сжиматься до нуля. */
+.contacts, .services, .why, .sect__grid, .hero__grid, .hero__row, .cta, .cta-band__inner, .svc-grid { grid-template-columns: minmax(0, 1fr); }
+.contacts > *, .services > *, .why > *, .sect__grid > *, .hero__grid > *, .hero__row > *, .cta > *, .cta-band__inner > * { min-width: 0; }
 
-/* Тема 1 — Dark Automotive: премиальный тёмный дизайн. */
+/* Концепция B — CLEAN PREMIUM: светлый фон, чёрная типографика, редкие красные акценты. */
 :root {
-  --font-display: "Space Grotesk", "Manrope", "Segoe UI Semibold", "Segoe UI", system-ui, sans-serif;
-  --font-body: "Manrope", "Segoe UI", system-ui, -apple-system, sans-serif;
-  --display-tracking: -0.025em;
-
-  --bg: #0a0c10;
-  --fg: #f2f5f8;
-  --fg-muted: #9aa5b4;
-  --accent: #ff6a1a;
-  --accent-fg: #140600;
-  --line: #1d222b;
-  --line-strong: #2d3542;
-  --card-bg: #11151b;
-  --chip-bg: #12161d;
-  --ghost-bg: rgba(255, 255, 255, 0.02);
-  --head-bg: rgba(10, 12, 16, 0.82);
-  --art-bg: radial-gradient(120% 100% at 20% 0%, #1b212b 0%, #0b0e13 60%);
-  --cta-bg: linear-gradient(135deg, #161b23 0%, #0d1015 60%), radial-gradient(80% 120% at 85% 10%, rgba(255, 106, 26, 0.22), transparent 60%);
-  --today-bg: #151a21;
-  --card-sheen: radial-gradient(70% 70% at 50% 0%, rgba(255, 106, 26, 0.09), transparent 70%);
-  --glow: radial-gradient(50% 60% at 50% 50%, rgba(255, 106, 26, 0.45), transparent 70%);
-  --glow-opacity: 0.5;
-  --grid: linear-gradient(to right, rgba(255, 255, 255, 0.045) 1px, transparent 1px), linear-gradient(to bottom, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
-  --grid-opacity: 0.9;
-  --demo-bg: #ff6a1a;
-  --demo-fg: #180700;
-  --shadow-accent: 0 10px 30px -12px rgba(255, 106, 26, 0.65);
-  --shadow-accent-hover: 0 18px 40px -14px rgba(255, 106, 26, 0.8);
-  --shadow-card: 0 24px 50px -30px rgba(0, 0, 0, 0.9);
-  --accent-soft: rgba(255, 106, 26, 0.12);
-  --poster-overlay: linear-gradient(180deg, rgba(10, 12, 16, 0.35) 0%, rgba(10, 12, 16, 0.85) 70%, #0a0c10 100%), linear-gradient(90deg, rgba(10, 12, 16, 0.85), transparent 70%);
-  --radius-m: 20px; --radius-l: 32px;
+  --font-display: "Onest", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Onest", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --bg: #f7f6f3; --fg: #0d0d0d; --muted: #6a6a64;
+  --accent: #d3232b; --accent-fg: #ffffff; --accent-soft: rgba(211, 35, 43, 0.08);
+  --line: #e6e3dc; --line-strong: #d0ccc2; --card: #ffffff; --today: #f3f1eb;
+  --head-bg: rgba(247, 246, 243, 0.9);
+  --demo-bg: #0d0d0d; --demo-fg: #ffffff;
+  --radius: 14px; --radius-lg: 32px;
 }
+h1, h2, h3 { letter-spacing: -0.035em; line-height: 1.02; font-weight: 700; }
+h2 { font-size: clamp(2rem, 1.3rem + 3vw, 3.6rem); margin-bottom: 0; }
+h3 { font-size: var(--step-1); letter-spacing: -0.02em; line-height: 1.2; }
+.kicker { margin: 0 0 1rem; display: flex; align-items: center; gap: 0.6rem; font-size: var(--step--1); font-weight: 600; color: var(--muted); letter-spacing: 0.02em; }
+.kicker::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+.kicker--light { color: rgba(255, 255, 255, 0.7); }
 
-.hero__title { font-weight: 700; }
-.stat__value { color: #fff; }
-.card { background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.025), transparent 40%); }
+.btn { border-radius: 999px; font-weight: 600; letter-spacing: -0.005em; }
+.btn--primary { background: #0d0d0d; color: #fff; }
+.btn--primary:hover { background: var(--accent); }
+.btn--ghost { border-color: #0d0d0d; }
+.btn--ghost:hover { background: #0d0d0d; color: #fff; border-color: #0d0d0d; }
+.btn--lg { padding: 1.1rem 1.8rem; }
+.btn--accent { background: var(--accent); color: #fff; }
+.btn--accent:hover { background: #fff; color: #0d0d0d; transform: translateY(-2px); }
+.btn--outline { border-color: rgba(255, 255, 255, 0.4); color: #fff; }
+.btn--outline:hover { border-color: #fff; background: rgba(255, 255, 255, 0.1); transform: translateY(-2px); }
 
-h1, h2 { font-weight: 700; }
-.hero__title { background: linear-gradient(180deg, #fff 30%, #b8c2d0 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
-.bento__item:first-child { box-shadow: 0 30px 60px -30px rgba(255, 106, 26, 0.6); }
-.cta { box-shadow: inset 0 1px 0 rgba(255,255,255,0.06); }
+.site-head { position: sticky; top: 0; z-index: 70; background: var(--head-bg); backdrop-filter: blur(16px); border-bottom: 1px solid var(--line); }
+.site-head__inner { display: flex; align-items: center; gap: 1.6rem; min-height: var(--header-h); }
+.brand { font-size: 1.1rem; letter-spacing: -0.02em; }
+.brand__dot { width: 10px; height: 10px; border-radius: 50%; background: var(--accent); flex: 0 0 10px; }
+.nav { display: none; margin-left: auto; gap: 1.8rem; font-size: 0.92rem; font-weight: 500; }
+.nav a { color: var(--muted); transition: color 0.2s; }
+.nav a:hover { color: var(--fg); }
+.head-phone { display: none; font-weight: 600; border-bottom: 1px solid var(--line-strong); padding-bottom: 1px; }
+.head-btn { margin-left: auto; }
+.nav + .head-phone, .nav ~ .head-btn { margin-left: 0; }
+@media (min-width: 900px) { .nav { display: flex; } .head-phone { display: inline; } .head-btn { display: none; } }
+
+.hero { padding: clamp(3rem, 7vw, 6rem) 0 clamp(2rem, 4vw, 3rem); }
+.hero__head { container-type: inline-size; }
+.hero__title { font-size: clamp(2.6rem, calc(100cqw / (var(--len, 8) * 0.8)), 8.6rem); letter-spacing: -0.045em; line-height: 0.95; margin: 0 0 clamp(1.5rem, 3vw, 2.6rem); max-width: 14ch; overflow-wrap: break-word; }
+.hero__row { display: grid; gap: 1.6rem; align-items: end; }
+.hero__lede { margin: 0; font-size: var(--step-1); color: var(--muted); max-width: 40ch; }
+.hero__actions { display: flex; flex-wrap: wrap; gap: 0.7rem; }
+.hero__panel { position: relative; margin: clamp(2rem, 5vw, 3.5rem) 0 0; border-radius: var(--radius-lg); overflow: hidden; background: #ecebe6; border: 1px solid var(--line); aspect-ratio: 16 / 9; }
+.hero__panel svg, .hero__panel img { width: 100%; height: 100%; object-fit: cover; }
+.hero__cap { position: absolute; left: 1rem; bottom: 1rem; right: 1rem; display: flex; flex-wrap: wrap; gap: 0.5rem; font-size: 0.85rem; }
+.hero__cap span { display: inline-flex; align-items: center; gap: 0.45rem; padding: 0.5rem 0.9rem; background: rgba(255, 255, 255, 0.92); border-radius: 999px; backdrop-filter: blur(8px); }
+.hero__cap svg { width: 15px; height: 15px; color: var(--accent); }
+
+.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); margin: clamp(2rem, 5vw, 3.5rem) 0 0; border-top: 1px solid var(--fg); }
+.facts > div { display: flex; flex-direction: column-reverse; gap: 0.3rem; padding: 1.4rem 1.6rem 0 0; }
+.facts dd { margin: 0; font-size: clamp(1.4rem, 1.1rem + 1.2vw, 2.1rem); font-weight: 650; letter-spacing: -0.03em; line-height: 1.1; }
+.facts dt { font-size: var(--step--1); color: var(--muted); }
+.facts .rating-link { font-size: inherit; border: 0; }
+.facts .rating-link__n, .facts .rating-link__src { font-size: 0.55em; letter-spacing: 0; }
+
+.section { padding: clamp(4rem, 8vw, 8rem) 0; }
+.section--white { background: #fff; border-block: 1px solid var(--line); }
+.section--tight { padding-top: 0; }
+.section__head { margin-bottom: clamp(2rem, 4vw, 3.5rem); }
+
+.services { display: grid; gap: 2.5rem; }
+.svc-grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); }
+.svc { position: relative; display: grid; gap: 1.6rem; align-content: start; min-height: 230px; padding: 1.6rem; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius-lg); transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease), border-color 0.4s; }
+.svc:hover { transform: translateY(-5px); border-color: var(--line-strong); box-shadow: 0 30px 60px -36px rgba(0, 0, 0, 0.35); }
+.svc__icon { width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center; background: #0d0d0d; color: #fff; transition: background 0.3s; }
+.svc:hover .svc__icon { background: var(--accent); }
+.svc__icon svg { width: 26px; height: 26px; stroke-width: 1.5; }
+.svc__title { margin: 0; font-size: clamp(1.25rem, 1.05rem + 0.8vw, 1.7rem); align-self: end; }
+.svc__title span { background: linear-gradient(var(--accent), var(--accent)) 0 100% / 0 2px no-repeat; transition: background-size 0.45s var(--ease); padding-bottom: 2px; }
+.svc:hover .svc__title span { background-size: 100% 2px; }
+.svc__text { margin: 0; color: var(--muted); font-size: 0.95rem; }
+.svc__arrow { position: absolute; right: 1.4rem; top: 1.5rem; color: var(--muted); font-size: 1.3rem; transition: transform 0.4s var(--ease), color 0.3s; }
+.svc:hover .svc__arrow { transform: translate(4px, -4px); color: var(--accent); }
+.prices, .hours { border-radius: var(--radius); overflow: hidden; }
+
+.why { display: grid; gap: 0; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 2rem; }
+.why__item { border-top: 1px solid var(--fg); padding-top: 1.2rem; position: relative; }
+.why__item::before { content: ""; position: absolute; top: -1px; left: 0; width: 44px; height: 3px; background: var(--accent); }
+.why__num { display: block; font-size: 0.85rem; font-weight: 600; color: var(--muted); margin-bottom: 1.6rem; letter-spacing: 0.06em; }
+.why__item h3 { margin: 0 0 0.5rem; font-size: var(--step-2); }
+.why__item p { margin: 0; color: var(--muted); }
+
+.contacts { display: grid; gap: 3rem; }
+.contacts__addr { font-size: clamp(1.7rem, 1.2rem + 2.2vw, 3rem); font-weight: 650; letter-spacing: -0.035em; line-height: 1.08; margin: 0 0 2rem; }
+.contacts__addr small { font-size: 0.4em; color: var(--muted); font-weight: 500; letter-spacing: 0; }
+.contact-item__icon { border-radius: 50%; background: #0d0d0d; color: #fff; }
+
+.cta { display: grid; gap: 2rem; padding: clamp(2rem, 6vw, 4.5rem); border-radius: var(--radius-lg); background: #0d0d0d; color: #fff; align-items: center; }
+.cta h2 { color: #fff; margin: 0 0 1rem; font-size: clamp(2rem, 1.2rem + 3.4vw, 4rem); max-width: 14ch; }
+.cta p { margin: 0; color: rgba(255, 255, 255, 0.7); max-width: 40ch; }
+.cta__actions { display: flex; flex-wrap: wrap; gap: 0.7rem; }
+.site-foot { background: transparent; }
+
+@media (min-width: 900px) {
+  .hero__row { grid-template-columns: 1fr auto; }
+  .services { grid-template-columns: 0.55fr 1.45fr; gap: 4rem; }
+  .services .section__head { position: sticky; top: calc(var(--header-h) + 2rem); align-self: start; }
+  .contacts { grid-template-columns: 1.2fr 0.8fr; gap: 5rem; }
+  .cta { grid-template-columns: 1.3fr 1fr; }
+}
+@media (max-width: 640px) { .hero__panel { aspect-ratio: 4 / 3; } .hero__panel svg { object-position: 62% 50%; } }
 </style>
 <script>
 if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches && "IntersectionObserver" in window) {
@@ -288,228 +228,169 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches && "Intersect
 }
 </script>
 </head>
-<body data-layout="center" data-theme="dark-automotive">
+<body data-concept="clean-premium" data-layout="clean-premium" data-theme="clean-premium">
 
 <div class="demo-bar"><b>Демо-концепт.</b> Неофициальный сайт компании. По запросу представителя будет удалён.</div>
 
 <header class="site-head">
   <div class="wrap site-head__inner">
-    <a class="brand" href="#top">
-      <svg class="brand__mark" viewBox="0 0 48 48" aria-hidden="true" fill="none">
-        <circle cx="24" cy="24" r="21" stroke="currentColor" stroke-width="2.5" opacity="0.35"/>
-        <circle cx="24" cy="24" r="8.5" stroke="var(--accent)" stroke-width="2.5"/>
-        <path d="M24 3.5V15M24 33v11.5M3.5 24H15M33 24h11.5" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round"/>
-      </svg>
-      <span>WhiteBear</span>
-    </a>
+    <a class="brand" href="#top" aria-label="WhiteBear"><i class="brand__dot" aria-hidden="true"></i><span>WhiteBear</span></a>
     <nav class="nav" aria-label="Разделы">
-<a href="#services">Услуги</a><a href="#why">Преимущества</a>      <a href="#contacts">Контакты</a>
+<a href="#services">Услуги</a><a href="#why">О сервисе</a>      <a href="#contacts">Контакты</a>
     </nav>
-<a class="btn btn--primary btn--sm" href="tel:+79537306870"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h3l2 5-2.5 1.5a12 12 0 0 0 6 6L15 13l5 2v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 3 5.2A2 2 0 0 1 5 3z"/></svg>Позвонить</a>  </div>
+<a class="head-phone" href="tel:+79537306870">+7 (953) 730-68-70</a>
+    <a class="btn btn--primary btn--sm head-btn" href="tel:+79537306870"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h3l2 5-2.5 1.5a12 12 0 0 0 6 6L15 13l5 2v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 3 5.2A2 2 0 0 1 5 3z"/></svg><span>Позвонить</span></a>  </div>
 </header>
 
 <main id="top">
-
 <section class="hero">
-  <div class="hero__glow" aria-hidden="true"></div>
-  <div class="hero__grid" aria-hidden="true"></div>
   <div class="wrap">
-    <div class="hero__inner">
-      <div class="hero__copy">
-<span class="eyebrow">Шиномонтаж · Рязань</span>        <h1 class="hero__title">WhiteBear</h1>
-        <p class="lede">Шиномонтаж · Московский район · детейлинг, ремонт ходовой части автомобиля</p>
+    <div class="hero__head">
+<p class="kicker">Шиномонтаж · Рязань</p>      <h1 class="hero__title" style="--len: 9">WhiteBear</h1>
+      <div class="hero__row">
+        <p class="hero__lede">Шиномонтаж · Московский район · детейлинг, ремонт ходовой части автомобиля</p>
         <div class="hero__actions">
-<a class="btn btn--primary" href="tel:+79537306870"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h3l2 5-2.5 1.5a12 12 0 0 0 6 6L15 13l5 2v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 3 5.2A2 2 0 0 1 5 3z"/></svg>+7 (953) 730-68-70</a><a class="btn btn--ghost" href="https://yandex.ru/maps/?rtext=~54.663624%2C39.657496&amp;rtt=auto" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="18" r="2.2"/><circle cx="18" cy="6" r="2.2"/><path d="M8.2 18H15a3 3 0 0 0 0-6H9a3 3 0 0 1 0-6h6.8"/></svg>Построить маршрут</a>        </div>
-<p class="hero__addr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.3 7-11a7 7 0 1 0-14 0c0 4.7 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg><span>Рязань, улица Бирюзова, 22 к3</span></p>      </div>
-
-      <div class="hero__media" role="img" aria-label="Декоративная графика: колесо и разметка сервиса">
-        <svg viewBox="0 0 640 480" aria-hidden="true" fill="none" preserveAspectRatio="xMidYMid slice">
-          <defs>
-            <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0" stop-color="var(--accent)" stop-opacity="0.95"/>
-              <stop offset="1" stop-color="var(--accent)" stop-opacity="0.12"/>
-            </linearGradient>
-            <radialGradient id="g2" cx="50%" cy="50%" r="50%">
-              <stop offset="0" stop-color="var(--accent)" stop-opacity="0.35"/>
-              <stop offset="1" stop-color="var(--accent)" stop-opacity="0"/>
-            </radialGradient>
-          </defs>
-          <g stroke="currentColor" opacity="0.12">
-<line x1="0" y1="60" x2="640" y2="60"/><line x1="0" y1="120" x2="640" y2="120"/><line x1="0" y1="180" x2="640" y2="180"/><line x1="0" y1="240" x2="640" y2="240"/><line x1="0" y1="300" x2="640" y2="300"/><line x1="0" y1="360" x2="640" y2="360"/><line x1="0" y1="420" x2="640" y2="420"/><line x1="0" y1="480" x2="640" y2="480"/><line x1="64" y1="0" x2="64" y2="480"/><line x1="128" y1="0" x2="128" y2="480"/><line x1="192" y1="0" x2="192" y2="480"/><line x1="256" y1="0" x2="256" y2="480"/><line x1="320" y1="0" x2="320" y2="480"/><line x1="384" y1="0" x2="384" y2="480"/><line x1="448" y1="0" x2="448" y2="480"/><line x1="512" y1="0" x2="512" y2="480"/><line x1="576" y1="0" x2="576" y2="480"/><line x1="640" y1="0" x2="640" y2="480"/>          </g>
-          <circle cx="330" cy="240" r="210" fill="url(#g2)"/>
-          <circle cx="330" cy="240" r="152" stroke="url(#g1)" stroke-width="22"/>
-          <circle cx="330" cy="240" r="124" stroke="currentColor" stroke-width="1.5" opacity="0.3" stroke-dasharray="3 9"/>
-          <circle cx="330" cy="240" r="104" stroke="currentColor" stroke-width="2" opacity="0.3"/>
-          <g class="spin">
-            <path d="M330 240 L330 142" stroke="var(--accent)" stroke-width="9" stroke-linecap="round" opacity="0.85" transform="rotate(0 330 240)"/>
-            <path d="M330 240 L330 142" stroke="var(--accent)" stroke-width="9" stroke-linecap="round" opacity="0.85" transform="rotate(60 330 240)"/>
-            <path d="M330 240 L330 142" stroke="var(--accent)" stroke-width="9" stroke-linecap="round" opacity="0.85" transform="rotate(120 330 240)"/>
-            <path d="M330 240 L330 142" stroke="var(--accent)" stroke-width="9" stroke-linecap="round" opacity="0.85" transform="rotate(180 330 240)"/>
-            <path d="M330 240 L330 142" stroke="var(--accent)" stroke-width="9" stroke-linecap="round" opacity="0.85" transform="rotate(240 330 240)"/>
-            <path d="M330 240 L330 142" stroke="var(--accent)" stroke-width="9" stroke-linecap="round" opacity="0.85" transform="rotate(300 330 240)"/>
-          </g>
-          <circle cx="330" cy="240" r="30" fill="var(--accent)" opacity="0.16"/>
-          <circle cx="330" cy="240" r="16" stroke="var(--accent)" stroke-width="4"/>
-          <g>
-            <rect x="60" y="404" width="520" height="8" rx="4" fill="currentColor" opacity="0.12"/>
-            <rect x="60" y="404" width="170" height="8" rx="4" fill="var(--accent)"/>
-          </g>
-        </svg>
+<a class="btn btn--primary btn--lg" href="tel:+79537306870"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h3l2 5-2.5 1.5a12 12 0 0 0 6 6L15 13l5 2v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 3 5.2A2 2 0 0 1 5 3z"/></svg>+7 (953) 730-68-70</a><a class="btn btn--ghost btn--lg" href="https://yandex.ru/maps/?rtext=~54.663624%2C39.657496&amp;rtt=auto" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="18" r="2.2"/><circle cx="18" cy="6" r="2.2"/><path d="M8.2 18H15a3 3 0 0 0 0-6H9a3 3 0 0 1 0-6h6.8"/></svg>Маршрут</a>        </div>
       </div>
     </div>
 
-    <div class="facts reveal">
-      <div class="fact"><div class="fact__value"><span class="star">★</span>5.0<small>· 4 отзыва</small></div><div class="fact__label">Рейтинг в 2ГИС</div></div>
-      <div class="fact"><div class="fact__value">Ежедневно 09:00⁠–⁠21:00</div><div class="fact__label">Режим работы</div></div>
-      <div class="fact"><div class="fact__value">Московский район</div><div class="fact__label">Рязань</div></div>
-      <div class="fact"><div class="fact__value">4</div><div class="fact__label">направления работ</div></div>
-    </div>
+    <figure class="hero__panel" role="img" aria-label="Декоративная графика: колесо">
+      <svg viewBox="0 0 1200 520" fill="none" aria-hidden="true" preserveAspectRatio="xMidYMid slice">
+        <g stroke="#0d0d0d" stroke-width="1.5" opacity="0.14">
+<line x1="0" y1="65" x2="1200" y2="65"/><line x1="0" y1="130" x2="1200" y2="130"/><line x1="0" y1="195" x2="1200" y2="195"/><line x1="0" y1="260" x2="1200" y2="260"/><line x1="0" y1="325" x2="1200" y2="325"/><line x1="0" y1="390" x2="1200" y2="390"/><line x1="0" y1="455" x2="1200" y2="455"/>        </g>
+        <circle cx="760" cy="300" r="260" stroke="#0d0d0d" stroke-width="2"/>
+        <circle cx="760" cy="300" r="214" stroke="#0d0d0d" stroke-width="1.5" opacity="0.5"/>
+        <circle cx="760" cy="300" r="150" stroke="#0d0d0d" stroke-width="1.5"/>
+        <circle cx="760" cy="300" r="48" stroke="#0d0d0d" stroke-width="2"/>
+<line x1="760" y1="252" x2="760" y2="150" stroke="#0d0d0d" stroke-width="1.5" transform="rotate(0 760 300)"/><line x1="760" y1="252" x2="760" y2="150" stroke="#0d0d0d" stroke-width="1.5" transform="rotate(45 760 300)"/><line x1="760" y1="252" x2="760" y2="150" stroke="#0d0d0d" stroke-width="1.5" transform="rotate(90 760 300)"/><line x1="760" y1="252" x2="760" y2="150" stroke="#0d0d0d" stroke-width="1.5" transform="rotate(135 760 300)"/><line x1="760" y1="252" x2="760" y2="150" stroke="#0d0d0d" stroke-width="1.5" transform="rotate(180 760 300)"/><line x1="760" y1="252" x2="760" y2="150" stroke="#0d0d0d" stroke-width="1.5" transform="rotate(225 760 300)"/><line x1="760" y1="252" x2="760" y2="150" stroke="#0d0d0d" stroke-width="1.5" transform="rotate(270 760 300)"/><line x1="760" y1="252" x2="760" y2="150" stroke="#0d0d0d" stroke-width="1.5" transform="rotate(315 760 300)"/>        <path d="M760 40a260 260 0 0 1 184 76" stroke="var(--accent)" stroke-width="5" stroke-linecap="round"/>
+        <circle cx="760" cy="300" r="7" fill="var(--accent)"/>
+        <path d="M60 470h360" stroke="#0d0d0d" stroke-width="2"/><path d="M60 470h90" stroke="var(--accent)" stroke-width="5"/>
+      </svg>
+      <figcaption class="hero__cap">
+<span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.3 7-11a7 7 0 1 0-14 0c0 4.7 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>Рязань, улица Бирюзова, 22 к3</span>      </figcaption>
+    </figure>
+
+    <dl class="facts reveal">
+<div><dd><a class="rating-link" href="https://2gis.com/firm/70000001109866225" target="_blank" rel="noopener noreferrer" title="Рейтинг в 2ГИС"><span class="star">★</span> <b>5.0</b> <span class="rating-link__n">· 4 отзыва</span><span class="rating-link__src"> в 2ГИС</span></a></dd><dt>Рейтинг клиентов</dt></div><div><dd>Ежедневно 09:00–21:00</dd><dt>Режим работы</dt></div><div><dd>Московский район</dd><dt>Рязань</dt></div>    </dl>
   </div>
 </section>
 
-<section class="section section--stripe" id="services">
-  <div class="wrap">
-    <div class="section__head reveal">
-      <span class="eyebrow">Направления работ</span>
-      <h2>Услуги из карточки компании</h2>
-    </div>
-    <ul class="grid grid--services">
-      <li class="card reveal">
-        <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><path d="M12 3v4.5M12 16.5V21M3 12h4.5M16.5 12H21"/></svg></div>
-        <h3 class="card__title">Шиномонтаж</h3>
-      </li>
-      <li class="card reveal">
-        <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 16V12l2-5h12l2 5v4"/><path d="M3 16h18v3h-3v-1.5H6V19H3zM7 12h10"/><circle cx="7.5" cy="14" r=".6"/><circle cx="16.5" cy="14" r=".6"/></svg></div>
-        <h3 class="card__title">Детейлинг</h3>
-      </li>
-      <li class="card reveal">
-        <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 16V12l2-5h12l2 5v4"/><path d="M3 16h18v3h-3v-1.5H6V19H3zM7 12h10"/><circle cx="7.5" cy="14" r=".6"/><circle cx="16.5" cy="14" r=".6"/></svg></div>
-        <h3 class="card__title">Ремонт ходовой части автомобиля</h3>
-      </li>
-      <li class="card reveal">
-        <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M4.2 7.5l15.6 9M19.8 7.5l-15.6 9"/><path d="m9.5 4.5 2.5 2 2.5-2M9.5 19.5l2.5-2 2.5 2"/></svg></div>
-        <h3 class="card__title">Обслуживание автомобильных климатических систем</h3>
-      </li>
-    </ul>
-    <div class="service-foot reveal">
-      <p><b>Стоимость уточняйте по телефону.</b> Мастер назовёт итоговую сумму до начала работ.</p>
-<a class="btn btn--primary btn--sm" href="tel:+79537306870"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h3l2 5-2.5 1.5a12 12 0 0 0 6 6L15 13l5 2v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 3 5.2A2 2 0 0 1 5 3z"/></svg>+7 (953) 730-68-70</a>    </div>
+<section class="section" id="services">
+  <div class="wrap services">
+    <header class="section__head reveal">
+      <p class="kicker">Услуги</p>
+      <h2>Чем мы занимаемся</h2>
+    </header>
+    <div>
+      <ul class="svc-grid">
+        <li class="svc reveal">
+          <span class="svc__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><path d="M12 3v4.5M12 16.5V21M3 12h4.5M16.5 12H21"/></svg></span>
+          <h3 class="svc__title"><span>Шиномонтаж</span></h3>
+          <span class="svc__arrow" aria-hidden="true">→</span>
+        </li>
+        <li class="svc reveal">
+          <span class="svc__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 16V12l2-5h12l2 5v4"/><path d="M3 16h18v3h-3v-1.5H6V19H3zM7 12h10"/><circle cx="7.5" cy="14" r=".6"/><circle cx="16.5" cy="14" r=".6"/></svg></span>
+          <h3 class="svc__title"><span>Детейлинг</span></h3>
+          <span class="svc__arrow" aria-hidden="true">→</span>
+        </li>
+        <li class="svc reveal">
+          <span class="svc__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 16V12l2-5h12l2 5v4"/><path d="M3 16h18v3h-3v-1.5H6V19H3zM7 12h10"/><circle cx="7.5" cy="14" r=".6"/><circle cx="16.5" cy="14" r=".6"/></svg></span>
+          <h3 class="svc__title"><span>Ремонт ходовой части автомобиля</span></h3>
+          <span class="svc__arrow" aria-hidden="true">→</span>
+        </li>
+        <li class="svc reveal">
+          <span class="svc__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M4.2 7.5l15.6 9M19.8 7.5l-15.6 9"/><path d="m9.5 4.5 2.5 2 2.5-2M9.5 19.5l2.5-2 2.5 2"/></svg></span>
+          <h3 class="svc__title"><span>Обслуживание автомобильных климатических систем</span></h3>
+          <span class="svc__arrow" aria-hidden="true">→</span>
+        </li>
+      </ul>
+<div class="service-foot">
+  <p><b>Стоимость уточняйте по телефону.</b> Мастер назовёт итоговую сумму до начала работ.</p>
+<a class="btn btn--primary btn--sm" href="tel:+79537306870"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h3l2 5-2.5 1.5a12 12 0 0 0 6 6L15 13l5 2v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 3 5.2A2 2 0 0 1 5 3z"/></svg>+7 (953) 730-68-70</a></div>    </div>
   </div>
 </section>
 
 
-<section class="section" id="why">
+<section class="section section--white" id="why">
   <div class="wrap">
-    <div class="section__head reveal">
-      <span class="eyebrow">Почему сюда обращаются</span>
-      <h2>Факты о сервисе</h2>
-    </div>
-    <ul class="bento">
-      <li class="bento__item reveal">
-        <span class="bento__num">01</span>
-        <h3>Понятный график</h3>
-        <p>Ежедневно 09:00–21:00.</p>
-      </li>
-      <li class="bento__item reveal">
-        <span class="bento__num">02</span>
-        <h3>Рейтинг 5.0 в 2ГИС</h3>
-        <p>Оценка по 4 отзывам клиентов.</p>
-      </li>
-      <li class="bento__item reveal">
-        <span class="bento__num">03</span>
-        <h3>Несколько направлений работ</h3>
-        <p>В карточке компании указано направлений: 4.</p>
-      </li>
-      <li class="bento__item reveal">
-        <span class="bento__num">04</span>
-        <h3>Московский район</h3>
-        <p>Адрес: улица Бирюзова, 22 к3.</p>
-      </li>
+    <header class="section__head reveal"><p class="kicker">О сервисе</p><h2>Коротко о сервисе</h2></header>
+    <ul class="why">
+      <li class="why__item reveal"><span class="why__num">01</span><h3>Понятный график</h3><p>Ежедневно 09:00–21:00.</p></li>
+      <li class="why__item reveal"><span class="why__num">02</span><h3>Рейтинг 5.0 в 2ГИС</h3><p>Оценка по 4 отзывам клиентов.</p></li>
+      <li class="why__item reveal"><span class="why__num">03</span><h3>Несколько направлений работ</h3><p>В карточке компании указано направлений: 4.</p></li>
+      <li class="why__item reveal"><span class="why__num">04</span><h3>Московский район</h3><p>Адрес: улица Бирюзова, 22 к3.</p></li>
     </ul>
   </div>
 </section>
 
 
 <section class="section" id="contacts">
-  <div class="wrap split">
+  <div class="wrap">
+    <header class="section__head reveal"><p class="kicker">Контакты</p><h2>Приезжайте или звоните</h2></header>
+    <div class="contacts">
+      <div class="contacts__main reveal">
+<p class="contacts__addr">Рязань, улица Бирюзова, 22 к3 <small>(1 этаж)</small></p>        <ul class="contact-list">
+  <li class="contact-item">
+    <span class="contact-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h3l2 5-2.5 1.5a12 12 0 0 0 6 6L15 13l5 2v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 3 5.2A2 2 0 0 1 5 3z"/></svg></span>
     <div>
-      <div class="section__head reveal">
-        <span class="eyebrow">Контакты</span>
-        <h2>Как с нами связаться</h2>
-      </div>
-      <ul class="contact-list reveal">
-        <li class="contact-item">
-          <span class="contact-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.3 7-11a7 7 0 1 0-14 0c0 4.7 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg></span>
-          <div>
-            <div class="contact-item__label">Адрес · Московский район</div>
-            <div class="contact-item__value">Рязань, улица Бирюзова, 22 к3 (1 этаж)</div>
-          </div>
-        </li>
-        <li class="contact-item">
-          <span class="contact-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h3l2 5-2.5 1.5a12 12 0 0 0 6 6L15 13l5 2v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 3 5.2A2 2 0 0 1 5 3z"/></svg></span>
-          <div>
-            <div class="contact-item__label">Телефон</div>
-            <a class="contact-item__value" href="tel:+79537306870">+7 (953) 730-68-70</a>
-          </div>
-        </li>
-      </ul>
-      <div class="chat-row reveal">
-<a class="btn btn--primary btn--sm" href="https://yandex.ru/maps/?rtext=~54.663624%2C39.657496&amp;rtt=auto" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="18" r="2.2"/><circle cx="18" cy="6" r="2.2"/><path d="M8.2 18H15a3 3 0 0 0 0-6H9a3 3 0 0 1 0-6h6.8"/></svg>Маршрут</a><a class="btn btn--ghost btn--sm" href="https://2gis.com/firm/70000001109866225" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.3 7-11a7 7 0 1 0-14 0c0 4.7 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>Карточка в 2ГИС</a><a class="btn btn--ghost btn--sm" href="https://wa.me/79537306870" target="_blank" rel="noopener noreferrer">WhatsApp</a>      </div>
+      <div class="contact-item__label">Телефон</div>
+      <a class="contact-item__value" href="tel:+79537306870">+7 (953) 730-68-70</a>
     </div>
-
-    <div id="hours">
-      <div class="section__head reveal">
-        <span class="eyebrow">Режим работы</span>
-        <h2>Ежедневно 09:00–21:00</h2>
+  </li>
+</ul>
+        <div class="chat-row">
+<a class="btn btn--primary btn--sm" href="https://yandex.ru/maps/?rtext=~54.663624%2C39.657496&amp;rtt=auto" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="18" r="2.2"/><circle cx="18" cy="6" r="2.2"/><path d="M8.2 18H15a3 3 0 0 0 0-6H9a3 3 0 0 1 0-6h6.8"/></svg>Маршрут</a><a class="btn btn--ghost btn--sm" href="https://2gis.com/firm/70000001109866225" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.3 7-11a7 7 0 1 0-14 0c0 4.7 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>Карточка в 2ГИС</a><a class="btn btn--ghost btn--sm" href="https://wa.me/79537306870" target="_blank" rel="noopener noreferrer">WhatsApp</a></div>
       </div>
-      <div class="hours reveal">
-        <div class="hours__row">
-          <span class="hours__day">Понедельник</span>
-          <span class="hours__value">09:00–21:00</span>
-        </div>
-        <div class="hours__row">
-          <span class="hours__day">Вторник</span>
-          <span class="hours__value">09:00–21:00</span>
-        </div>
-        <div class="hours__row">
-          <span class="hours__day">Среда</span>
-          <span class="hours__value">09:00–21:00</span>
-        </div>
-        <div class="hours__row hours__row--today">
-          <span class="hours__day">Четверг · сегодня</span>
-          <span class="hours__value">09:00–21:00</span>
-        </div>
-        <div class="hours__row">
-          <span class="hours__day">Пятница</span>
-          <span class="hours__value">09:00–21:00</span>
-        </div>
-        <div class="hours__row">
-          <span class="hours__day">Суббота</span>
-          <span class="hours__value">09:00–21:00</span>
-        </div>
-        <div class="hours__row">
-          <span class="hours__day">Воскресенье</span>
-          <span class="hours__value">09:00–21:00</span>
-        </div>
+      <div class="reveal" id="hours">
+        <p class="kicker">Режим работы</p>
+        <div class="hours">
+  <div class="hours__row">
+    <span class="hours__day">Понедельник</span>
+    <span class="hours__value">09:00–21:00</span>
+  </div>
+  <div class="hours__row">
+    <span class="hours__day">Вторник</span>
+    <span class="hours__value">09:00–21:00</span>
+  </div>
+  <div class="hours__row">
+    <span class="hours__day">Среда</span>
+    <span class="hours__value">09:00–21:00</span>
+  </div>
+  <div class="hours__row">
+    <span class="hours__day">Четверг</span>
+    <span class="hours__value">09:00–21:00</span>
+  </div>
+  <div class="hours__row hours__row--today">
+    <span class="hours__day">Пятница · сегодня</span>
+    <span class="hours__value">09:00–21:00</span>
+  </div>
+  <div class="hours__row">
+    <span class="hours__day">Суббота</span>
+    <span class="hours__value">09:00–21:00</span>
+  </div>
+  <div class="hours__row">
+    <span class="hours__day">Воскресенье</span>
+    <span class="hours__value">09:00–21:00</span>
+  </div>
+</div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="section">
+<section class="section section--tight">
   <div class="wrap">
     <div class="cta reveal">
-      <div class="cta__inner">
-        <span class="eyebrow">Запись</span>
+      <div>
+        <p class="kicker kicker--light">Запись</p>
         <h2>Записаться на обслуживание</h2>
-        <p class="lede">Позвоните — мастер подскажет свободное время и уточнит стоимость работ.</p>
-        <div class="hero__actions">
-<a class="btn btn--primary" href="tel:+79537306870"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h3l2 5-2.5 1.5a12 12 0 0 0 6 6L15 13l5 2v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 3 5.2A2 2 0 0 1 5 3z"/></svg>+7 (953) 730-68-70</a><a class="btn btn--ghost" href="https://yandex.ru/maps/?rtext=~54.663624%2C39.657496&amp;rtt=auto" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="18" r="2.2"/><circle cx="18" cy="6" r="2.2"/><path d="M8.2 18H15a3 3 0 0 0 0-6H9a3 3 0 0 1 0-6h6.8"/></svg>Как добраться</a>        </div>
+        <p>Позвоните — мастер подскажет свободное время и уточнит стоимость работ.</p>
       </div>
+      <div class="cta__actions">
+<a class="btn btn--accent btn--lg" href="tel:+79537306870"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h3l2 5-2.5 1.5a12 12 0 0 0 6 6L15 13l5 2v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 3 5.2A2 2 0 0 1 5 3z"/></svg>+7 (953) 730-68-70</a><a class="btn btn--outline btn--lg" href="https://yandex.ru/maps/?rtext=~54.663624%2C39.657496&amp;rtt=auto" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="18" r="2.2"/><circle cx="18" cy="6" r="2.2"/><path d="M8.2 18H15a3 3 0 0 0 0-6H9a3 3 0 0 1 0-6h6.8"/></svg>Как добраться</a>      </div>
     </div>
   </div>
 </section>
-
 </main>
 
 <footer class="site-foot">
@@ -526,14 +407,26 @@ if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches && "Intersect
 
 <script>
 (function () {
-  var items = document.querySelectorAll(".reveal");
   if (!document.documentElement.classList.contains("js")) { return; }
   var io = new IntersectionObserver(function (entries) {
     entries.forEach(function (e) {
       if (e.isIntersecting) { e.target.classList.add("is-visible"); io.unobserve(e.target); }
     });
   }, { rootMargin: "0px 0px -6% 0px", threshold: 0.06 });
-  items.forEach(function (el) { io.observe(el); });
+  document.querySelectorAll(".reveal").forEach(function (el) { io.observe(el); });
+  var rail = document.querySelectorAll("[data-spy]");
+  if (rail.length) {
+    var spy = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) { return; }
+        rail.forEach(function (a) { a.classList.toggle("is-active", a.getAttribute("href") === "#" + e.target.id); });
+      });
+    }, { rootMargin: "-40% 0px -55% 0px" });
+    rail.forEach(function (a) {
+      var t = document.getElementById(a.getAttribute("href").slice(1));
+      if (t) { spy.observe(t); }
+    });
+  }
 })();
 </script>
 </body>
